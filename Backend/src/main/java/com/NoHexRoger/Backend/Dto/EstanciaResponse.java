@@ -11,5 +11,6 @@ public class EstanciaResponse {
     private Integer id;
     private LocalDateTime fechaEntrada;
     private LocalDateTime fechaSalida;
+    private Integer vehiculoId;
 
 }
