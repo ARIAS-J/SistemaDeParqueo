@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity(name = "vehiculo")
 @Data
@@ -19,7 +16,7 @@ public class Vehiculo {
     @Id
     private String placa;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "tipo_vehiculo_id")
     private TipoVehiculo tipoVehiculo;
 }
