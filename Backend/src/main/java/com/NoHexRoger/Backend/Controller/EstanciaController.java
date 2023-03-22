@@ -44,6 +44,6 @@ public class EstanciaController {
                 .fechaSalida(newEstancia.getFechaSalida())
                 .build();
 
-        return new ResponseEntity(newEstancia, HttpStatus.CREATED);
+        return new ResponseEntity(estanciaResponse, HttpStatus.CREATED);
     }
 }
