@@ -1,16 +1,16 @@
 package com.NoHexRoger.Backend.Dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Builder;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
+@Builder
 public class EstanciaResponse {
     private Integer id;
     private LocalDateTime fechaEntrada;
     private LocalDateTime fechaSalida;
-    private Integer vehiculoId;
+    private String vehiculoId;
 
 }

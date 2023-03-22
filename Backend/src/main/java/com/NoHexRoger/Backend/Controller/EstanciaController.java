@@ -4,7 +4,9 @@ import com.NoHexRoger.Backend.Dto.EstanciaRequest;
 import com.NoHexRoger.Backend.Dto.EstanciaResponse;
 import com.NoHexRoger.Backend.Entity.Estancia;
 
+import com.NoHexRoger.Backend.Entity.Vehiculo;
 import com.NoHexRoger.Backend.Service.EstanciaService;
+import com.NoHexRoger.Backend.Service.VehiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,8 @@ public class EstanciaController {
     @Autowired
     private EstanciaService estanciaService;
 
+    @Autowired
+    private VehiculoService vehiculoService;
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Estancia> getAll(){
@@ -25,23 +29,21 @@ public class EstanciaController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Estancia> createEstancia(@RequestBody EstanciaRequest estancia){
-        Vehiculo vehiculo = vehiculoService.getVehiculoById(estancia.getVehiculoId()).OrElseThrow();
+    public ResponseEntity<Estancia> createEstancia(@RequestBody EstanciaRequest estanciaRequest){
+        Vehiculo vehiculo = vehiculoService.getVehiculoById(estanciaRequest.getVehiculoId());
 
-        Estancia createEstancia = new Estancia();
+        Estancia newEstancia = Estancia.builder()
+                .vehiculo(vehiculo)
+                .build();
 
-        createEstancia.setVehiculo(Vehiculo);
+        estanciaService.createEstancia(newEstancia);
 
-        Estancia create = estanciaService.createEstancia(createEstancia);
+        EstanciaResponse estanciaResponse = EstanciaResponse.builder()
+                .vehiculoId(newEstancia.getVehiculo().getPlaca())
+                .fechaEntrada(newEstancia.getFechaEntrada())
+                .fechaSalida(newEstancia.getFechaSalida())
+                .build();
 
-        EstanciaResponse estanciaResponse = new EstanciaResponse();
-
-        estanciaResponse.setId(create.getId());
-        estanciaResponse.setFechaEntrada(create.getFechaEntrada());
-        estanciaResponse.setFechaSalida(create.getFechaSalida());
-        estanciaResponse.setVehiculoId(create.getVehiculo().getId());
-
-        return ResponseEntity.ok(estanciaResponse);
+        return new ResponseEntity(estanciaResponse, HttpStatus.CREATED);
     }
 }
