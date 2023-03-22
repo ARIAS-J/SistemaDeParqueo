@@ -1,17 +1,17 @@
 package com.NoHexRoger.Backend.Entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity(name = "estancia")
-@Getter
-@Setter
+
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Data
+@Entity(name = "estancia")
 public class Estancia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ public class Estancia {
     private LocalDateTime fechaSalida;
 
     @ManyToOne
-    @JoinColumn(name = "vehiculoId", nullable = false)
+    @JoinColumn(name = "vehiculo_id", nullable = false)
     private Vehiculo vehiculo;
 
 }
