@@ -24,20 +24,18 @@ public class VehiculoService {
         return vehiculoRepository.findById(vehiculoId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    public List<Vehiculo> getAll() {
+    public List<Vehiculo> findAll() {
         return vehiculoRepository.findAll();
     }
 
     public Vehiculo create(VehiculoRequest vehiculoRequest) {
-        TipoVehiculo tipoVehiculo = tipoVehiculoService.getByName(vehiculoRequest.getTipo());
+        TipoVehiculo tipoVehiculo = tipoVehiculoService.findById(vehiculoRequest.getTipoVehiculoId());
 
         Vehiculo newVehiculo = Vehiculo.builder()
                 .placa(vehiculoRequest.getPlaca())
                 .tipoVehiculo(tipoVehiculo)
                 .build();
 
-        vehiculoRepository.save(newVehiculo);
-
-        return newVehiculo;
+        return vehiculoRepository.save(newVehiculo);
     }
 }

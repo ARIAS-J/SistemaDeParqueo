@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class VehiculoResponse {
     private String placa;
-    private String tipo;
+    private Long tipoVehiculoId;
 }

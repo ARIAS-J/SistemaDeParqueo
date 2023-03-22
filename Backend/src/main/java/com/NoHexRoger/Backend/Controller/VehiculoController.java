@@ -20,7 +20,7 @@ public class VehiculoController {
 
     @GetMapping
     public ResponseEntity<List<Vehiculo>> getAllVehiculos() {
-        return new ResponseEntity(vehiculoService.getAll(), HttpStatus.OK);
+        return new ResponseEntity(vehiculoService.findAll(), HttpStatus.OK);
     }
 
     @PostMapping
