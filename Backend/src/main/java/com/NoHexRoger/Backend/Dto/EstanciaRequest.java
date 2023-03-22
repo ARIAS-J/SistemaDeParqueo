@@ -10,5 +10,5 @@ import java.time.LocalDateTime;
 public class EstanciaRequest {
     private LocalDateTime fechaEntrada;
     private LocalDateTime fechaSalida;
-    private Integer vehiculoId;
+    private String vehiculoId;
 }
