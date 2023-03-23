@@ -3,7 +3,9 @@ package com.NoHexRoger.Backend.Service;
 import com.NoHexRoger.Backend.Entity.Estancia;
 import com.NoHexRoger.Backend.Repository.EstanciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class EstanciaService {
     }
 
     public Estancia getEstanciaById(Integer id){
-        return estanciaRepository.findById(id).orElse(null);
+        return estanciaRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     public Estancia createEstancia(Estancia estancia){
