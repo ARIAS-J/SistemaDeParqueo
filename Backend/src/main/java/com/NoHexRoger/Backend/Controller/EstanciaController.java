@@ -28,6 +28,12 @@ public class EstanciaController {
         return estanciaService.getEstancias();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Estancia> getEstanciaById(@PathVariable("id") Integer id){
+        return new ResponseEntity<>(estanciaService.getEstanciaById(id), HttpStatus.OK);
+    }
+
+
     @PostMapping
     public ResponseEntity<Estancia> createEstancia(@RequestBody EstanciaRequest estanciaRequest){
         Vehiculo vehiculo = vehiculoService.getVehiculoById(estanciaRequest.getVehiculoId());
@@ -39,6 +45,7 @@ public class EstanciaController {
         estanciaService.createEstancia(newEstancia);
 
         EstanciaResponse estanciaResponse = EstanciaResponse.builder()
+                .id(newEstancia.getId())
                 .vehiculoId(newEstancia.getVehiculo().getPlaca())
                 .fechaEntrada(newEstancia.getFechaEntrada())
                 .fechaSalida(newEstancia.getFechaSalida())
