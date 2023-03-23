@@ -53,4 +53,9 @@ public class EstanciaController {
 
         return new ResponseEntity(estanciaResponse, HttpStatus.CREATED);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Estancia> updateEstancia(@PathVariable("id") Integer id, @RequestBody Estancia  estanciaRequest){
+        return estanciaService.updateEstancia(id, estanciaRequest);
+    }
 }
