@@ -16,6 +16,9 @@ public class Vehiculo {
     @Id
     private String placa;
 
+    @Column
+    private Integer tiempoAcumulado;
+
     @ManyToOne
     @JoinColumn(name = "tipo_vehiculo_id")
     private TipoVehiculo tipoVehiculo;
