@@ -27,4 +27,9 @@ public class VehiculoController {
     public ResponseEntity<VehiculoResponse> createVehiculo(@RequestBody VehiculoRequest vehiculoRequest) {
         return new ResponseEntity(vehiculoService.create(vehiculoRequest), HttpStatus.CREATED);
     }
+
+    @PostMapping("/comenzar-mes")
+    public void comenzarMes(){
+        vehiculoService.comenzarMes();
+    }
 }
