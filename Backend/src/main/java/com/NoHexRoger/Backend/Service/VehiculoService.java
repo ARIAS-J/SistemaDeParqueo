@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -19,6 +21,9 @@ public class VehiculoService {
 
     @Autowired
     private TipoVehiculoService tipoVehiculoService;
+
+    @Autowired
+    private EntityManager entityManager;
 
     public Vehiculo getVehiculoById(String vehiculoId) {
         return vehiculoRepository.findById(vehiculoId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -37,5 +42,9 @@ public class VehiculoService {
                 .build();
 
         return vehiculoRepository.save(newVehiculo);
+    }
+    @Transactional
+    public void comenzarMes(){
+        entityManager.createQuery("UPDATE vehiculo v SET v.tiempoAcumulado = 0").executeUpdate();
     }
 }
