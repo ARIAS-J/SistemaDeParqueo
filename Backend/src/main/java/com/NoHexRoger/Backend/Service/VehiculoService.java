@@ -45,6 +45,10 @@ public class VehiculoService {
     }
     @Transactional
     public void comenzarMes(){
-        entityManager.createQuery("UPDATE vehiculo v SET v.tiempoAcumulado = 0").executeUpdate();
+        entityManager.createQuery("UPDATE vehiculo v SET v.minutosAcumulados = 0").executeUpdate();
+    }
+
+    public void deleteVehicleById(String id) {
+            vehiculoRepository.deleteById(id);
     }
 }

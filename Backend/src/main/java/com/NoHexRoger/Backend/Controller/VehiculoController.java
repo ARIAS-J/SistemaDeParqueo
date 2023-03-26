@@ -28,8 +28,9 @@ public class VehiculoController {
         return new ResponseEntity(vehiculoService.create(vehiculoRequest), HttpStatus.CREATED);
     }
 
-    @PostMapping("/comenzar-mes")
-    public void comenzarMes(){
-        vehiculoService.comenzarMes();
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteVehiculo(@PathVariable String id) {
+        vehiculoService.deleteVehicleById(id);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
