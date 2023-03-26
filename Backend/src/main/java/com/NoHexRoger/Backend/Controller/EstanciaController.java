@@ -58,4 +58,14 @@ public class EstanciaController {
     public ResponseEntity<Estancia> updateEstancia(@PathVariable("id") Integer id, @RequestBody Estancia  estanciaRequest){
         return estanciaService.updateEstancia(id, estanciaRequest);
     }
+
+    @PostMapping("/{id}/finalizar")
+    public ResponseEntity<Estancia> updateEstancia(@PathVariable("id") Integer id, @RequestBody FinalizarEstanciaRequest finalizarEstanciaRequest) {
+        return new ResponseEntity<>(estanciaService.finalizarEstancia(id, finalizarEstanciaRequest), HttpStatus.OK);
+    }
+
+    @GetMapping("/deudas")
+    public ResponseEntity<List<EstanciaReportItem>> getReporteEstancias() {
+        return new ResponseEntity<>(estanciaService.getReporteEstancias(), HttpStatus.OK);
+    }
 }

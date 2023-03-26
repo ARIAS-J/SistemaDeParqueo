@@ -49,4 +49,23 @@ public class EstanciaService {
         }
 
     }
+
+    public List<EstanciaReportItem> getReporteEstancias() {
+        return vehiculoService.findAll().stream().map(vehiculo -> {
+            BigDecimal montoAPagar = Constants.TASA_POR_MINUTO.multiply(new BigDecimal(vehiculo.getMinutosAcumulados()));
+
+            return EstanciaReportItem.builder()
+                    .placa(vehiculo.getPlaca())
+                    .minutosEstacionados(vehiculo.getMinutosAcumulados())
+                    .cantidadAPagar(montoAPagar)
+                    .build();
+        }).collect(Collectors.toList());
+    }
+
+    public Estancia finalizarEstancia(Integer id, FinalizarEstanciaRequest finalizarEstanciaRequest) {
+        Estancia estancia = getEstanciaById(id);
+        estancia.setFechaSalida(finalizarEstanciaRequest.getFechaSalida());
+        estanciaRepository.save(estancia);
+        return estancia;
+    }
 }
