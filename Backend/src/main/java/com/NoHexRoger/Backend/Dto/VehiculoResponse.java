@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -12,5 +14,6 @@ import lombok.NoArgsConstructor;
 public class VehiculoResponse {
     private String placa;
     private int minutosAcumulados;
+    private BigDecimal deudaAcumulada;
     private Long tipoVehiculoId;
 }

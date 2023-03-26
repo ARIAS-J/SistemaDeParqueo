@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -52,5 +53,21 @@ public class VehiculoService {
 
     public void deleteVehicleById(String id) {
             vehiculoRepository.deleteById(id);
+    }
+
+    public void updateVehiculo(Vehiculo vehiculo) {
+        vehiculoRepository.save(vehiculo);
+    }
+
+    public void pagarDeuda(String id) {
+        Vehiculo vehiculo = vehiculoRepository.getById(id);
+        vehiculo.setDeudaAcumulada(new BigDecimal(0));
+
+        if (vehiculo.getDeudaAcumulada().equals(0)) {
+            return;
+        }
+
+        vehiculo.setDeudaAcumulada(new BigDecimal(0));
+        vehiculoRepository.save(vehiculo);
     }
 }

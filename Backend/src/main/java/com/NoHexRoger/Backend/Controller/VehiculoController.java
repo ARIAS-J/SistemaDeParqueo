@@ -33,4 +33,11 @@ public class VehiculoController {
         vehiculoService.deleteVehicleById(id);
         return new ResponseEntity(HttpStatus.OK);
     }
+
+    @PostMapping("/{id}/pagar")
+    public ResponseEntity pagarDeuda(@PathVariable String id) {
+        vehiculoService.pagarDeuda(id);
+        return new ResponseEntity(HttpStatus.OK);
+
+    }
 }
