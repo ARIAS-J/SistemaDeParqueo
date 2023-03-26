@@ -38,6 +38,8 @@ public class VehiculoService {
 
         Vehiculo newVehiculo = Vehiculo.builder()
                 .placa(vehiculoRequest.getPlaca())
+                .minutosAcumulados(0)
+                .deudaAcumulada(BigDecimal.ZERO)
                 .tipoVehiculo(tipoVehiculo)
                 .build();
 
