@@ -9,6 +9,5 @@ import java.time.LocalDateTime;
 @Setter
 public class EstanciaRequest {
     private LocalDateTime fechaEntrada;
-    private LocalDateTime fechaSalida;
-    private String vehiculoId;
+    private String placa;
 }
