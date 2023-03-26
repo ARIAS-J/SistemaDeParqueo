@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class VehiculoResponse {
     private String placa;
-    private Integer tiempoAcumulado;
+    private int minutosAcumulados;
     private Long tipoVehiculoId;
 }
