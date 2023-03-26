@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,6 +42,7 @@ public class EstanciaService {
 
         Estancia estancia = Estancia.builder()
                 .vehiculo(vehiculo)
+                .fechaEntrada(estanciaRequest.getFechaEntrada())
                 .build();
 
         estanciaRepository.save(estancia);
@@ -90,8 +94,29 @@ public class EstanciaService {
 
     public Estancia finalizarEstancia(Integer id, FinalizarEstanciaRequest finalizarEstanciaRequest) {
         Estancia estancia = getEstanciaById(id);
+
+        if (estancia.getFechaEntrada().isAfter(finalizarEstanciaRequest.getFechaSalida())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
         estancia.setFechaSalida(finalizarEstanciaRequest.getFechaSalida());
         estanciaRepository.save(estancia);
+
+        // calculate stay duration in minutes
+        Duration duration = Duration.between(estancia.getFechaEntrada(), estancia.getFechaSalida());
+        Integer minutesPassed = Long.valueOf(duration.toMinutes()).intValue();
+
+        // calculate deuda
+        BigDecimal deuda = new BigDecimal(minutesPassed).multiply(Constants.TASA_POR_MINUTO);
+
+        // add it to the vehicle entity
+        Vehiculo vehiculo = estancia.getVehiculo();
+        Integer minutosAcumulados = minutesPassed + vehiculo.getMinutosAcumulados();
+        BigDecimal deudaAcumulada = deuda.add(vehiculo.getDeudaAcumulada()).round(new MathContext(2, RoundingMode.HALF_UP));
+        vehiculo.setMinutosAcumulados(minutosAcumulados);
+        vehiculo.setDeudaAcumulada(deudaAcumulada);
+        vehiculoService.updateVehiculo(vehiculo);
+
         return estancia;
     }
 }
