@@ -1,10 +1,11 @@
 package com.NoHexRoger.Backend.Controller;
 
+import com.NoHexRoger.Backend.Dto.EstanciaReportItem;
 import com.NoHexRoger.Backend.Dto.EstanciaRequest;
 import com.NoHexRoger.Backend.Dto.EstanciaResponse;
+import com.NoHexRoger.Backend.Dto.FinalizarEstanciaRequest;
 import com.NoHexRoger.Backend.Entity.Estancia;
 
-import com.NoHexRoger.Backend.Entity.Vehiculo;
 import com.NoHexRoger.Backend.Service.EstanciaService;
 import com.NoHexRoger.Backend.Service.VehiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,40 +23,35 @@ public class EstanciaController {
 
     @Autowired
     private VehiculoService vehiculoService;
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Estancia> getAll(){
+    public List<Estancia> getAll() {
         return estanciaService.getEstancias();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Estancia> getEstanciaById(@PathVariable("id") Integer id){
+    public ResponseEntity<Estancia> getEstanciaById(@PathVariable("id") Integer id) {
         return new ResponseEntity<>(estanciaService.getEstanciaById(id), HttpStatus.OK);
     }
 
-
     @PostMapping
-    public ResponseEntity<Estancia> createEstancia(@RequestBody EstanciaRequest estanciaRequest){
-        Vehiculo vehiculo = vehiculoService.getVehiculoById(estanciaRequest.getVehiculoId());
-
-        Estancia newEstancia = Estancia.builder()
-                .vehiculo(vehiculo)
-                .build();
-
-        estanciaService.createEstancia(newEstancia);
-
-        EstanciaResponse estanciaResponse = EstanciaResponse.builder()
-                .id(newEstancia.getId())
-                .vehiculoId(newEstancia.getVehiculo().getPlaca())
-                .fechaEntrada(newEstancia.getFechaEntrada())
-                .fechaSalida(newEstancia.getFechaSalida())
-                .build();
-
-        return new ResponseEntity(estanciaResponse, HttpStatus.CREATED);
+    public ResponseEntity<EstanciaResponse> createEstancia(@RequestBody EstanciaRequest estanciaRequest) {
+        return new ResponseEntity(estanciaService.createEstancia(estanciaRequest), HttpStatus.CREATED);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Estancia> updateEstancia(@PathVariable("id") Integer id, @RequestBody Estancia  estanciaRequest){
+    public ResponseEntity<Estancia> updateEstancia(@PathVariable("id") Integer id, @RequestBody Estancia estanciaRequest) {
         return estanciaService.updateEstancia(id, estanciaRequest);
+    }
+
+    @PostMapping("/{id}/finalizar")
+    public ResponseEntity<Estancia> updateEstancia(@PathVariable("id") Integer id, @RequestBody FinalizarEstanciaRequest finalizarEstanciaRequest) {
+        return new ResponseEntity<>(estanciaService.finalizarEstancia(id, finalizarEstanciaRequest), HttpStatus.OK);
+    }
+
+    @GetMapping("/deudas")
+    public ResponseEntity<List<EstanciaReportItem>> getReporteEstancias() {
+        return new ResponseEntity<>(estanciaService.getReporteEstancias(), HttpStatus.OK);
     }
 }

@@ -8,12 +8,11 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class VehiculoResponse {
+@AllArgsConstructor
+@Builder
+public class EstanciaReportItem {
     private String placa;
-    private int minutosAcumulados;
-    private BigDecimal deudaAcumulada;
-    private Long tipoVehiculoId;
+    private Integer minutosEstacionados;
+    private BigDecimal cantidadAPagar;
 }

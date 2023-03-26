@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity(name = "vehiculo")
 @Data
@@ -16,8 +17,10 @@ public class Vehiculo {
     @Id
     private String placa;
 
-    @Column
-    private Integer tiempoAcumulado;
+    private int minutosAcumulados;
+
+    @Column(columnDefinition = "numeric(10,2)")
+    private BigDecimal deudaAcumulada;
 
     @ManyToOne
     @JoinColumn(name = "tipo_vehiculo_id")
