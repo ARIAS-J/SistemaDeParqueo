@@ -33,25 +33,9 @@ public class EstanciaController {
         return new ResponseEntity<>(estanciaService.getEstanciaById(id), HttpStatus.OK);
     }
 
-
     @PostMapping
-    public ResponseEntity<Estancia> createEstancia(@RequestBody EstanciaRequest estanciaRequest){
-        Vehiculo vehiculo = vehiculoService.getVehiculoById(estanciaRequest.getVehiculoId());
-
-        Estancia newEstancia = Estancia.builder()
-                .vehiculo(vehiculo)
-                .build();
-
-        estanciaService.createEstancia(newEstancia);
-
-        EstanciaResponse estanciaResponse = EstanciaResponse.builder()
-                .id(newEstancia.getId())
-                .vehiculoId(newEstancia.getVehiculo().getPlaca())
-                .fechaEntrada(newEstancia.getFechaEntrada())
-                .fechaSalida(newEstancia.getFechaSalida())
-                .build();
-
-        return new ResponseEntity(estanciaResponse, HttpStatus.CREATED);
+    public ResponseEntity<EstanciaResponse> createEstancia(@RequestBody EstanciaRequest estanciaRequest) {
+        return new ResponseEntity(estanciaService.createEstancia(estanciaRequest), HttpStatus.CREATED);
     }
 
     @PatchMapping("/{id}")
