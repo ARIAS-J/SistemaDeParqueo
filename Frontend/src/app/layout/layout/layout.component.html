@@ -1,8 +1,19 @@
-<nav>
-  <ul>
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/vehiculos">Vehiculos</a></li>
-    <li><a routerLink="/estancias">Estancias</a></li>
+<nav class="max-w-7xl mx-auto border-b mb-5 flex justify-between">
+  <ul class="flex">
+    <li *ngFor="let link of links">
+      <a routerLink="{{ link.path }}">
+        <div class="hover:bg-gray-100 py-4 px-5">
+          {{ link.label }}
+        </div>
+      </a>
+    </li>
   </ul>
+  <div class="flex gap-2 items-center">
+    <app-button label="Comenzar mes" variant="text"></app-button>
+    <app-button label="Generar reporte" variant="outline"></app-button>
+    <app-button label="Otro"></app-button>
+  </div>
 </nav>
-<router-outlet></router-outlet>
+<div class="flex mx-auto max-w-7xl px-4">
+  <router-outlet></router-outlet>
+</div>
