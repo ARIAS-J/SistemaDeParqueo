@@ -5,4 +5,19 @@ import { Component } from '@angular/core';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css'],
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+  links: { label: string; path: string }[] = [
+    {
+      label: 'Home',
+      path: '/',
+    },
+    {
+      label: 'Vehiculos',
+      path: '/vehiculos',
+    },
+    {
+      label: 'Estancias',
+      path: '/estancias',
+    },
+  ];
+}
