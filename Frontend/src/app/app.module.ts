@@ -9,6 +9,8 @@ import { EstanciasComponent } from './pages/estancias/estancias.component';
 import { VehiculosComponent } from './pages/vehiculos/vehiculos.component';
 import { ButtonComponent } from './components/button/button.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { FiltroPipe } from './pages/vehiculos/pipes/filtro.pipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     EstanciasComponent,
     VehiculosComponent,
     ButtonComponent,
+    SearchBarComponent,
+    FiltroPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
