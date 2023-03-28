@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { EstanciasComponent } from './pages/estancias/estancias.component';
 import { VehiculosComponent } from './pages/vehiculos/vehiculos.component';
 import { ButtonComponent } from './components/button/button.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { ButtonComponent } from './components/button/button.component';
     VehiculosComponent,
     ButtonComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
