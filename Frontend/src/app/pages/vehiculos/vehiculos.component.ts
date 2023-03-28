@@ -10,11 +10,21 @@ import { VehiculoService } from './Service/vehiculo.service';
 export class VehiculosComponent implements OnInit {
   public vehiculos: Vehiculo[] = [];
 
+  public page: number = 0;
+
   constructor(private vehiculoService: VehiculoService) {}
 
   ngOnInit(): void {
     this.vehiculoService
       .getVehiculos()
       .subscribe((vehiculos) => (this.vehiculos = vehiculos));
+  }
+
+  nextPage() {
+    this.page += 5;
+  }
+
+  prevPage() {
+    if (this.page > 0) this.page -= 5;
   }
 }
