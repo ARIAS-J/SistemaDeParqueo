@@ -21,7 +21,7 @@ export class VehiculosComponent implements OnInit {
   }
 
   nextPage() {
-    this.page += 5;
+    if (this.page < 5) this.page += 5;
   }
 
   prevPage() {
