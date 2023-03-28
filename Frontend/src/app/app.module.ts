@@ -11,6 +11,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FiltroPipe } from './pages/vehiculos/pipes/filtro.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
