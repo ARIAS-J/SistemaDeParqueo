@@ -11,6 +11,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FiltroPipe } from './pages/vehiculos/pipes/filtro.pipe';
+import { VehiculoModalComponent } from './components/vehiculo-modal/vehiculo-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FiltroPipe } from './pages/vehiculos/pipes/filtro.pipe';
     ButtonComponent,
     SearchBarComponent,
     FiltroPipe,
+    VehiculoModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

@@ -1,6 +1,10 @@
 <div class="flex justify-between items-center w-full mb-4">
     <app-search-bar></app-search-bar>
-    <app-button label="Añadir Vehiculo"></app-button>
+    <app-button label="Añadir Vehiculo" (click)="modalIsOpen()"></app-button>
+</div>
+
+<div *ngIf="modalSwitch == true" class="">
+    <app-vehiculo-modal></app-vehiculo-modal>
 </div>
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
