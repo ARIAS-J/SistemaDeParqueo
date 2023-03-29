@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Vehiculo } from 'src/app/shared/vehiculo';
-import { VehiculoService } from './Service/vehiculo.service';
+import { SwitchService, VehiculoService } from './Service/vehiculo.service';
 
 @Component({
   selector: 'app-vehiculos',
@@ -12,12 +12,19 @@ export class VehiculosComponent implements OnInit {
 
   public page: number = 0;
 
-  constructor(private vehiculoService: VehiculoService) {}
+  public modalSwitch: boolean = false;
+
+  constructor(
+    private vehiculoService: VehiculoService,
+    private modalSS: SwitchService
+  ) {}
 
   ngOnInit(): void {
     this.vehiculoService
       .getVehiculos()
       .subscribe((vehiculos) => (this.vehiculos = vehiculos));
+
+    this.modalSS.$modal.subscribe((valor) => (this.modalSwitch = valor));
   }
 
   nextPage() {
@@ -26,5 +33,9 @@ export class VehiculosComponent implements OnInit {
 
   prevPage() {
     if (this.page > 0) this.page -= 5;
+  }
+
+  modalIsOpen() {
+    this.modalSwitch = true;
   }
 }
