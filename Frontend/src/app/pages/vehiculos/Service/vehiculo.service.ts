@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Vehiculo } from 'src/app/shared/vehiculo';
 import { TipoVehiculo } from 'src/app/shared/tipoVehiculo';
 
