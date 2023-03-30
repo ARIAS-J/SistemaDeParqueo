@@ -8,11 +8,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @Service
 public class TipoVehiculoService {
 
     @Autowired
     private TipoVehiculoRepository tipoVehiculoRepository;
+
+    public List<TipoVehiculo> getTipoVehiculos (){return tipoVehiculoRepository.findAll();}
+
 
     public TipoVehiculo findById(Long id) {
         return tipoVehiculoRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
