@@ -12,6 +12,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FiltroPipe } from './pages/vehiculos/pipes/filtro.pipe';
 import { ModalComponent } from './components/modal/modal.component';
+import { VehiculoFormComponent } from './components/vehiculo-form/vehiculo-form.component';
+import { FormsModule } from '@angular/forms';
+import { PagosFormComponent } from './components/pagos-form/pagos-form.component';
+import { CreditCardFormComponent } from './components/credit-card-form/credit-card-form.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +28,11 @@ import { ModalComponent } from './components/modal/modal.component';
     SearchBarComponent,
     FiltroPipe,
     ModalComponent,
+    VehiculoFormComponent,
+    PagosFormComponent,
+    CreditCardFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
