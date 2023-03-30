@@ -8,8 +8,9 @@ import { EstanciasService } from './estancias.service';
   styleUrls: ['./estancias.component.css'],
 })
 export class EstanciasComponent implements OnInit {
-  estancias!: Estancia[];
+  estancias: Estancia[] = [];
   selectedEstancia!: Estancia;
+  showFinalizarModal: boolean = false;
 
   constructor(private estanciasService: EstanciasService) {}
 
@@ -17,5 +18,13 @@ export class EstanciasComponent implements OnInit {
     this.estanciasService
       .getEstancias()
       .subscribe((data) => (this.estancias = data));
+  }
+
+  closeFinalizarModal() {
+    this.showFinalizarModal = false;
+  }
+
+  openFinalizarModal() {
+    this.showFinalizarModal = true;
   }
 }
