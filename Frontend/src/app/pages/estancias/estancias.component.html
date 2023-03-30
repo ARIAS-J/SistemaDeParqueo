@@ -1,3 +1,5 @@
+<app-modal (onClose)="closeFinalizarModal()" *ngIf="showFinalizarModal">
+</app-modal>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
   <table class="w-full text-sm text-left text-gray-500">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -13,14 +15,19 @@
         <td class="px-6 py-4">
           {{ estancia.fechaEntrada | date : "MMM dd, yy hh:mm a" }}
         </td>
-        <td class="px-6 py-4">
+        <td *ngIf="estancia.fechaSalida" class="px-6 py-4">
           {{ estancia.fechaSalida | date : "MMM dd, yy hh:mm a" }}
         </td>
+        <td *ngIf="!estancia.fechaSalida" class="px-6 py-4">No ha salido</td>
         <td class="px-6 py-4">{{ estancia.vehiculo.placa }}</td>
         <td class="px-6 py-4">
-          <button href="#" class="font-medium text-blue-600 hover:underline">
-            Finalizar
-          </button>
+          <app-button
+            [disabled]="!!estancia.fechaSalida"
+            label="Finalizar"
+            href="#"
+            (onClick)="openFinalizarModal()"
+          >
+          </app-button>
         </td>
       </tr>
     </tbody>
