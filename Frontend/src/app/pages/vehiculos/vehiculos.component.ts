@@ -12,7 +12,7 @@ export class VehiculosComponent implements OnInit {
 
   public page: number = 0;
   showAddVehiculoModal: boolean = false;
-  public modalSwitch: boolean = false;
+  showPagosModal: boolean = false;
 
   constructor(private vehiculoService: VehiculoService) {}
 
@@ -23,18 +23,26 @@ export class VehiculosComponent implements OnInit {
   }
 
   nextPage() {
-    if (this.page < 5) this.page += 5;
+    this.page += 5;
   }
 
   prevPage() {
     if (this.page > 0) this.page -= 5;
   }
 
-  modalIsOpen() {
+  modalVehiculoIsOpen() {
     this.showAddVehiculoModal = true;
   }
 
-  handleClose() {
+  modalVehiculoHandleClose() {
     this.showAddVehiculoModal = false;
+  }
+
+  modalPagosIsOpen() {
+    this.showPagosModal = true;
+  }
+
+  modalPagosHandleClose() {
+    this.showPagosModal = false;
   }
 }
