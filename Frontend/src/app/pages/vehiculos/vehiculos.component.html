@@ -7,7 +7,7 @@
     <app-vehiculo-form></app-vehiculo-form>
 </app-modal>
 
-<app-modal title="Pago" (onClose)="modalPagosHandleClose()">
+<app-modal *ngIf="showPagosModal" title="Pago" (onClose)="modalPagosHandleClose()">
     <app-pagos-form></app-pagos-form>
 </app-modal>
 
