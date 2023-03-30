@@ -11,7 +11,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FiltroPipe } from './pages/vehiculos/pipes/filtro.pipe';
-import { VehiculoModalComponent } from './components/vehiculo-modal/vehiculo-modal.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { VehiculoModalComponent } from './components/vehiculo-modal/vehiculo-mod
     ButtonComponent,
     SearchBarComponent,
     FiltroPipe,
-    VehiculoModalComponent,
+    ModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

@@ -29,12 +29,3 @@ export class TipoVehiculoService {
     return this.http.get<TipoVehiculo[]>(this.url);
   }
 }
-
-@Injectable({
-  providedIn: 'root',
-})
-export class SwitchService {
-  constructor() {}
-
-  $modal = new EventEmitter<any>();
-}
