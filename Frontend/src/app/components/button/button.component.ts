@@ -9,6 +9,7 @@ export class ButtonComponent {
   @Input() label: String = 'Button';
   @Input() variant: Variant = 'default';
   @Input() disabled: boolean = false;
+  @Input() type: 'submit' | 'button' = 'button';
 
   @Output() onClick = new EventEmitter();
 

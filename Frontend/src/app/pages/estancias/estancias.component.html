@@ -1,4 +1,9 @@
-<app-modal (onClose)="closeFinalizarModal()" *ngIf="showFinalizarModal">
+<app-modal
+  title="Finalizar estancia"
+  (onClose)="closeEndStayModal()"
+  *ngIf="showEndStayModal"
+>
+  <app-end-stay-form [stay]="selectedEstancia"></app-end-stay-form>
 </app-modal>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
   <table class="w-full text-sm text-left text-gray-500">
@@ -25,7 +30,7 @@
             [disabled]="!!estancia.fechaSalida"
             label="Finalizar"
             href="#"
-            (onClick)="openFinalizarModal()"
+            (onClick)="openEndStayModal(estancia)"
           >
           </app-button>
         </td>

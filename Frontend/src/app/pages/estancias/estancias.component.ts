@@ -9,8 +9,8 @@ import { EstanciasService } from './estancias.service';
 })
 export class EstanciasComponent implements OnInit {
   estancias: Estancia[] = [];
-  selectedEstancia!: Estancia;
-  showFinalizarModal: boolean = false;
+  selectedEstancia!: Estancia | undefined;
+  showEndStayModal: boolean = false;
 
   constructor(private estanciasService: EstanciasService) {}
 
@@ -20,11 +20,13 @@ export class EstanciasComponent implements OnInit {
       .subscribe((data) => (this.estancias = data));
   }
 
-  closeFinalizarModal() {
-    this.showFinalizarModal = false;
+  closeEndStayModal() {
+    this.showEndStayModal = false;
+    this.selectedEstancia = undefined;
   }
 
-  openFinalizarModal() {
-    this.showFinalizarModal = true;
+  openEndStayModal(stay: Estancia) {
+    this.selectedEstancia = stay;
+    this.showEndStayModal = true;
   }
 }
