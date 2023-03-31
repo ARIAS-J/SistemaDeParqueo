@@ -9,6 +9,7 @@ import com.NoHexRoger.Backend.Entity.Vehiculo;
 import com.NoHexRoger.Backend.Repository.EstanciaRepository;
 import com.NoHexRoger.Backend.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class EstanciaService {
     private VehiculoService vehiculoService;
 
     public List<Estancia> getEstancias(){
-        return estanciaRepository.findAll();
+        return estanciaRepository.findAll(Sort.by("fechaEntrada").descending());
     }
 
     public Estancia getEstanciaById(Integer id){
