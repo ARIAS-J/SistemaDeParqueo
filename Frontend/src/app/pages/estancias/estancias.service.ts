@@ -17,6 +17,11 @@ export class EstanciasService {
   finalizarEstancia({ id, fechaSalida }: { id: number; fechaSalida: string }) {
     return this.http.post(this.url + `/${id}/finalizar`, { fechaSalida });
   }
+
+  postEstancia(estancia: { placa: string; fechaEntrada: string }) {
+    return this.http.post(this.url, estancia);
+  }
+
   getCurrentLocalISODate() {
     const now = new Date();
     const date = {
