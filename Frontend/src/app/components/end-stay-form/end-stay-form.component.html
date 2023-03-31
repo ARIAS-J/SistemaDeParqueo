@@ -1,0 +1,24 @@
+<form class="w-96" (ngSubmit)="onSubmit()">
+  <label class="block mb-2 text-sm font-medium text-gray-900">Vehiculo</label>
+  <p class="mb-4" required>
+    {{ stay?.vehiculo?.placa }}
+  </p>
+
+  <label class="block mb-2 text-sm font-medium text-gray-900">Entrada</label>
+  <p class="mb-4" required>
+    {{ stay?.fechaEntrada | date : "MMM dd, yy hh:mm a" }}
+  </p>
+
+  <label class="block mb-2 text-sm font-medium text-gray-900">Salida</label>
+  <input
+    type="datetime-local"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+    name="fechaSalida"
+    required
+    onkeyup="this.value = this.value.toUpperCase();"
+    [(ngModel)]="fechaFinalizacion"
+  />
+  <div class="mt-4">
+    <app-button type="submit" label="Finalizar"></app-button>
+  </div>
+</form>
