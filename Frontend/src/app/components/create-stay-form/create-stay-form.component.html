@@ -1,0 +1,27 @@
+<form class="w-96" (ngSubmit)="handleSubmit()">
+  <label class="block mb-2 text-sm font-medium text-gray-900">Vehiculo</label>
+  <select
+    type="datetime-local"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-4"
+    required
+    name="placa"
+    [(ngModel)]="placa"
+  >
+    <option>Seleccionar placa</option>
+    <option *ngFor="let vehiculo of vehiculos" [value]="vehiculo.placa">
+      {{ vehiculo.placa }}
+    </option>
+  </select>
+
+  <label class="block mb-2 text-sm font-medium text-gray-900">Entrada</label>
+  <input
+    type="datetime-local"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+    required
+    name="fechaEntrada"
+    [(ngModel)]="fechaEntrada"
+  />
+  <div class="mt-4">
+    <app-button type="submit" label="Registrar"></app-button>
+  </div>
+</form>

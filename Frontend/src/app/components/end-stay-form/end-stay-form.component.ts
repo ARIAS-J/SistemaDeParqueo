@@ -14,17 +14,7 @@ export class EndStayFormComponent implements OnInit {
   constructor(private estanciasService: EstanciasService) {}
 
   ngOnInit(): void {
-    const now = new Date();
-    const date = {
-      year: now.getFullYear(),
-      month: this.zeroPad(now.getMonth() + 1),
-      day: this.zeroPad(now.getDate()),
-      hour: this.zeroPad(now.getHours()),
-      minute: this.zeroPad(now.getMinutes()),
-      seconds: this.zeroPad(now.getSeconds()),
-    };
-
-    this.fechaFinalizacion = `${date.year}-${date.month}-${date.day}T${date.hour}:${date.minute}:${date.seconds}`;
+    this.fechaFinalizacion = this.estanciasService.getCurrentLocalISODate();
   }
 
   onSubmit() {
@@ -39,10 +29,5 @@ export class EndStayFormComponent implements OnInit {
           alert('Done!');
         });
     }
-  }
-
-  private zeroPad(value: number): string {
-    if (value < 10) return '0' + value.toString();
-    return value.toString();
   }
 }

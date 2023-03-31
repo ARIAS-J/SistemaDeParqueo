@@ -5,6 +5,19 @@
 >
   <app-end-stay-form [stay]="selectedEstancia"></app-end-stay-form>
 </app-modal>
+<app-modal
+  title="Registrar estancia"
+  (onClose)="closeCreateStayModal()"
+  *ngIf="showCreateStayModal"
+>
+  <app-create-stay-form></app-create-stay-form>
+</app-modal>
+<div class="flex flex-row-reverse mb-4">
+  <app-button
+    label="Añadir estancia"
+    (onClick)="openCreateStayModal()"
+  ></app-button>
+</div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
   <table class="w-full text-sm text-left text-gray-500">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50">

@@ -11,6 +11,7 @@ export class EstanciasComponent implements OnInit {
   estancias: Estancia[] = [];
   selectedEstancia!: Estancia | undefined;
   showEndStayModal: boolean = false;
+  showCreateStayModal: boolean = false;
 
   constructor(private estanciasService: EstanciasService) {}
 
@@ -28,5 +29,13 @@ export class EstanciasComponent implements OnInit {
   openEndStayModal(stay: Estancia) {
     this.selectedEstancia = stay;
     this.showEndStayModal = true;
+  }
+
+  closeCreateStayModal() {
+    this.showCreateStayModal = false;
+  }
+
+  openCreateStayModal() {
+    this.showCreateStayModal = true;
   }
 }
