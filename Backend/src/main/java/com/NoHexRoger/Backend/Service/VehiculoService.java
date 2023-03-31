@@ -61,13 +61,14 @@ public class VehiculoService {
 
     public void pagarDeuda(String id) {
         Vehiculo vehiculo = vehiculoRepository.getById(id);
-        vehiculo.setDeudaAcumulada(new BigDecimal(0));
 
         if (vehiculo.getDeudaAcumulada().equals(0)) {
             return;
         }
 
         vehiculo.setDeudaAcumulada(new BigDecimal(0));
+        vehiculo.setMinutosAcumulados(0);
+
         vehiculoRepository.save(vehiculo);
     }
 }
