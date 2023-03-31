@@ -13,4 +13,8 @@ export class EstanciasService {
   getEstancias() {
     return this.http.get<Estancia[]>(this.url);
   }
+
+  finalizarEstancia({ id, fechaSalida }: { id: number; fechaSalida: string }) {
+    return this.http.post(this.url + `/${id}/finalizar`, { fechaSalida });
+  }
 }
