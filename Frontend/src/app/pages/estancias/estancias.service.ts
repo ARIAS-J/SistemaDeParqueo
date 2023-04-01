@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DeudaItem } from 'src/app/shared/deudaItem';
 import { Estancia } from 'src/app/shared/estancia';
 
 @Injectable({
@@ -39,5 +40,9 @@ export class EstanciasService {
   private zeroPad(value: number): string {
     if (value < 10) return '0' + value.toString();
     return value.toString();
+  }
+
+  getDeudasReport() {
+    return this.http.get<DeudaItem[]>(this.url + '/deudas');
   }
 }

@@ -1,0 +1,25 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-4">
+  <table class="w-full text-sm text-left text-gray-500">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-3">Placa</th>
+        <th scope="col" class="px-6 py-3">Minutos acumulados</th>
+        <th scope="col" class="px-6 py-3">Cantidad a pagar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white border-b" *ngFor="let deuda of deudas">
+        <td class="px-6 py-4">
+          {{ deuda.placa }}
+        </td>
+
+        <td class="px-6 py-4">
+          {{ deuda.minutosEstacionados }}
+        </td>
+        <td class="px-6 py-4">
+          {{ deuda.cantidadAPagar }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

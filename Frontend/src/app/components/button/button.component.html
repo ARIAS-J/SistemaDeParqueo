@@ -1,12 +1,12 @@
 <button
-  class="rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-40"
+  class="rounded-md px-4 py-2 text-sm font-medium transition-colors"
   [ngClass]="{
     'bg-blue-600 text-white hover:bg-blue-700  active:bg-blue-800':
       variant === 'default',
-    'border-none bg-transparent text-gray-800 hover:bg-gray-100 active:bg-gray-200':
-      variant === 'text',
     'border bg-transparent text-gray-800 hover:bg-gray-100 active:bg-gray-200':
-      variant === 'outline'
+      variant === 'outline',
+    'border-none bg-transparent text-gray-800 hover:bg-gray-100 active:bg-gray-200':
+      variant === 'text'
   }"
   [disabled]="disabled"
   (click)="handleBtnClick()"
