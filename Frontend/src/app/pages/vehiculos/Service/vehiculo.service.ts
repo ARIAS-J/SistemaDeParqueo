@@ -15,6 +15,10 @@ export class VehiculoService {
   getVehiculos(): Observable<Vehiculo[]> {
     return this.http.get<Vehiculo[]>(this.url);
   }
+
+  pagarDeuda(id: string) {
+    return this.http.post(this.url + `/${id}/pagar`, null);
+  }
 }
 
 @Injectable({
