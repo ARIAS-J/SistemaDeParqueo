@@ -1,5 +1,4 @@
-<div class="flex justify-between items-center w-full mb-4">
-    <app-search-bar></app-search-bar>
+<div class="flex justify-end items-center w-full mb-4">
     <app-button label="Añadir Vehiculo" (click)="modalVehiculoIsOpen()"></app-button>
 </div>
 
@@ -8,7 +7,7 @@
 </app-modal>
 
 <app-modal *ngIf="showPagosModal" title="Pago" (onClose)="modalPagosHandleClose()">
-    <app-pagos-form></app-pagos-form>
+    <app-pagos-form [vehiculo]="selectedVehiculo"></app-pagos-form>
 </app-modal>
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -36,7 +35,7 @@
                 </td>
                 <td class="px-6 py-4 flex space-x-4">
                     <app-button [disabled]="!vehiculo.deudaAcumulada" label="Pagar"
-                        (click)="modalPagosIsOpen()"></app-button>
+                        (click)="modalPagosIsOpen(vehiculo)"></app-button>
                 </td>
             </tr>
         </tbody>

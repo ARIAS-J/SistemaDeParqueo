@@ -13,12 +13,12 @@
         Pay with Visa
     </button>
 
-    <button type="button" (click)="creditCardFormIsClose()"
+    <button type="button" (click)="payWithCash()"
         class="text-white bg-[#050708] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-3 text-center inline-flex items-center dark:focus:ring-[#050708]/50 dark:hover:bg-[#050708]/30 mr-2 mb-2">
         Pay with cash
     </button>
 </div>
 
 <div *ngIf="showCreditCardForm" class="div">
-    <app-credit-card-form></app-credit-card-form>
+    <app-credit-card-form [vehiculo]="vehiculo" [payFunct]="payWithCash"></app-credit-card-form>
 </div>

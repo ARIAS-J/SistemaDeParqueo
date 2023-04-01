@@ -10,6 +10,8 @@ import { VehiculoService } from './Service/vehiculo.service';
 export class VehiculosComponent implements OnInit {
   public vehiculos: Vehiculo[] = [];
 
+  selectedVehiculo: Vehiculo | undefined;
+
   public page: number = 0;
   showAddVehiculoModal: boolean = false;
   showPagosModal: boolean = false;
@@ -38,7 +40,8 @@ export class VehiculosComponent implements OnInit {
     this.showAddVehiculoModal = false;
   }
 
-  modalPagosIsOpen() {
+  modalPagosIsOpen(vehiculo: Vehiculo) {
+    this.selectedVehiculo = vehiculo;
     this.showPagosModal = true;
   }
 

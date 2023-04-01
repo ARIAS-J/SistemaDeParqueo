@@ -9,7 +9,6 @@ import { EstanciasComponent } from './pages/estancias/estancias.component';
 import { VehiculosComponent } from './pages/vehiculos/vehiculos.component';
 import { ButtonComponent } from './components/button/button.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { FiltroPipe } from './pages/vehiculos/pipes/filtro.pipe';
 import { ModalComponent } from './components/modal/modal.component';
 import { VehiculoFormComponent } from './components/vehiculo-form/vehiculo-form.component';
@@ -27,7 +26,6 @@ import { CreateStayFormComponent } from './components/create-stay-form/create-st
     EstanciasComponent,
     VehiculosComponent,
     ButtonComponent,
-    SearchBarComponent,
     FiltroPipe,
     ModalComponent,
     VehiculoFormComponent,

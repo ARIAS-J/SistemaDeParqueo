@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { VehiculoService } from 'src/app/pages/vehiculos/Service/vehiculo.service';
+import { Vehiculo } from 'src/app/shared/vehiculo';
 
 @Component({
   selector: 'app-pagos-form',
@@ -7,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagosFormComponent implements OnInit {
   showCreditCardForm: boolean = false;
+  @Input() vehiculo: Vehiculo | undefined;
 
-  constructor() {}
+  constructor(private vehiculoService: VehiculoService) {}
 
   ngOnInit(): void {}
 
@@ -17,5 +20,13 @@ export class PagosFormComponent implements OnInit {
   }
   creditCardFormIsClose() {
     this.showCreditCardForm = false;
+  }
+
+  payWithCash() {
+    if (this.vehiculo)
+      this.vehiculoService.pagarDeuda(this.vehiculo.placa).subscribe(() => {
+        alert('Pago con exito');
+        window.location.reload();
+      });
   }
 }
