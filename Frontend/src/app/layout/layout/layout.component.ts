@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout.component.css'],
 })
 export class LayoutComponent {
+  showDeudasTable: boolean = false;
   links: { label: string; path: string }[] = [
     {
       label: 'Home',
@@ -20,4 +21,8 @@ export class LayoutComponent {
       path: '/estancias',
     },
   ];
+
+  switchShowDeudasModal(value: boolean) {
+    this.showDeudasTable = value;
+  }
 }

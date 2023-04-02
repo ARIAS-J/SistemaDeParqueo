@@ -17,6 +17,7 @@ import { PagosFormComponent } from './components/pagos-form/pagos-form.component
 import { CreditCardFormComponent } from './components/credit-card-form/credit-card-form.component';
 import { EndStayFormComponent } from './components/end-stay-form/end-stay-form.component';
 import { CreateStayFormComponent } from './components/create-stay-form/create-stay-form.component';
+import { DeudasTableComponent } from './components/deudas-table/deudas-table.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CreateStayFormComponent } from './components/create-stay-form/create-st
     CreditCardFormComponent,
     EndStayFormComponent,
     CreateStayFormComponent,
+    DeudasTableComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

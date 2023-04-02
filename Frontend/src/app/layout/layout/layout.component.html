@@ -1,3 +1,6 @@
+<app-modal *ngIf="showDeudasTable" title="Reporte de deudas" (onClose)="switchShowDeudasModal(false)">
+  <app-deudas-table />
+</app-modal>
 <nav class="max-w-7xl mx-auto border-b mb-5 flex justify-between">
   <ul class="flex">
     <li *ngFor="let link of links">
@@ -10,7 +13,7 @@
   </ul>
   <div class="flex gap-2 items-center">
     <app-button label="Comenzar mes" variant="text"></app-button>
-    <app-button label="Generar reporte" variant="outline"></app-button>
+    <app-button label="Generar reporte" variant="outline" (onClick)="switchShowDeudasModal(true)"></app-button>
   </div>
 </nav>
 <div class="mx-auto max-w-7xl px-4">
