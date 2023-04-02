@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EstanciasService } from 'src/app/pages/estancias/estancias.service';
 
 @Component({
   selector: 'app-layout',
@@ -22,7 +23,17 @@ export class LayoutComponent {
     },
   ];
 
+  constructor(private estanciasService: EstanciasService) {}
+
   switchShowDeudasModal(value: boolean) {
     this.showDeudasTable = value;
+  }
+
+  handleComenzarMes() {
+    console.log('CLICKED');
+    this.estanciasService.comenzarMes().subscribe(() => {
+      alert('Done!');
+      window.location.reload();
+    });
   }
 }
