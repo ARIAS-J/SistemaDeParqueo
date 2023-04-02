@@ -7,7 +7,8 @@ import { Estancia } from 'src/app/shared/estancia';
   providedIn: 'root',
 })
 export class EstanciasService {
-  url: string = 'http://localhost:8080/api/v1/estancias';
+  apiBase: string = 'http://localhost:8080/api/v1';
+  url: string = this.apiBase + '/estancias';
 
   constructor(private http: HttpClient) {}
 
@@ -44,5 +45,9 @@ export class EstanciasService {
 
   getDeudasReport() {
     return this.http.get<DeudaItem[]>(this.url + '/deudas');
+  }
+
+  comenzarMes() {
+    return this.http.post(this.apiBase + '/comenzar-mes', null);
   }
 }
